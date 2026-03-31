@@ -39,6 +39,6 @@ Watch the full setup guide:
 ---
  🙏 Credits
  
-* [aiko chan ai](https://github.com/aiko-chan-ai)
+* [Haryas](https://github.com/mamashinharyas6-boop)
 * [Complete Recent Discord Quest](https://gist.github.com/aamiaa/204cd9d42013ded9faf646fae7f89fbb/4912415839790240d49c1d2553e940f0c65f95d5)
 * [discord.js](https://github.com/discordjs/discord.js)
