@@ -37,6 +37,9 @@ export interface Quest {
 	 * Whether the quest is unreleased and in preview for Discord employees
 	 */
 	preview: boolean;
+	// ?
+	traffic_metadata_raw?: string;
+	traffic_metadata_sealed?: string;
 }
 
 /**
@@ -82,7 +85,7 @@ export interface QuestConfig {
 	/**
 	 * The task configuration for the quest
 	 */
-	task_config: QuestTaskConfig;
+	// task_config: QuestTaskConfig;
 	/**
 	 * Specifies rewards for the quest (e.g. collectibles)
 	 */
@@ -95,6 +98,48 @@ export interface QuestConfig {
 	 * The configuration for the quest co-sponsor
 	 */
 	cosponsor_metadata?: QuestCosponsorMetadata;
+	// ?
+	task_config_v2: {
+		tasks: /*{
+			WATCH_VIDEO?: {
+				type: QuestTaskConfigType.WATCH_VIDEO;
+				target: number;
+			};
+			WATCH_VIDEO_ON_MOBILE?: {
+				type: QuestTaskConfigType.WATCH_VIDEO_ON_MOBILE;
+				target: number;
+			};
+			PLAY_ON_DESKTOP?: {
+				type: QuestTaskConfigType.PLAY_ON_DESKTOP;
+				target: number;
+			};
+			PLAY_ON_XBOX?: {
+				type: QuestTaskConfigType.PLAY_ON_XBOX;
+				target: number;
+			};
+			PLAY_ON_PLAYSTATION?: {
+				type: QuestTaskConfigType.PLAY_ON_PLAYSTATION;
+				target: number;
+			};
+			PLAY_ACTIVITY?: {
+				type: QuestTaskConfigType.PLAY_ACTIVITY;
+				target: number;
+			};
+			ACHIEVEMENT_IN_ACTIVITY?: {
+				type: QuestTaskConfigType.ACHIEVEMENT_IN_ACTIVITY;
+				target: number;
+				event_name: 'progress';
+				applications: {
+					id: string;
+				}[];
+			};
+		};
+		*/
+		Record<
+			QuestTaskConfigType,
+			{ type: QuestTaskConfigType; target: number }
+		>;
+	};
 }
 
 export interface QuestUserStatus {
@@ -249,11 +294,16 @@ export interface QuestMessages {
 }
 
 export enum QuestTaskConfigType {
-	WATCH_VIDEO = 'WATCH_VIDEO',
-	PLAY_ON_DESKTOP = 'PLAY_ON_DESKTOP',
 	STREAM_ON_DESKTOP = 'STREAM_ON_DESKTOP',
-	PLAY_ACTIVITY = 'PLAY_ACTIVITY',
+	PLAY_ON_DESKTOP = 'PLAY_ON_DESKTOP',
+	PLAY_ON_DESKTOP_V2 = 'PLAY_ON_DESKTOP_V2',
+	PLAY_ON_XBOX = 'PLAY_ON_XBOX',
+	PLAY_ON_PLAYSTATION = 'PLAY_ON_PLAYSTATION',
+	WATCH_VIDEO = 'WATCH_VIDEO',
 	WATCH_VIDEO_ON_MOBILE = 'WATCH_VIDEO_ON_MOBILE',
+	PLAY_ACTIVITY = 'PLAY_ACTIVITY',
+	ACHIEVEMENT_IN_GAME = 'ACHIEVEMENT_IN_GAME',
+	ACHIEVEMENT_IN_ACTIVITY = 'ACHIEVEMENT_IN_ACTIVITY',
 }
 
 export interface QuestTaskConfig {
@@ -318,7 +368,7 @@ export interface QuestRewardsConfig {
 	/**
 	 * The platforms the rewards can be redeemed on
 	 */
-	platforms: number;
+	platforms: number[];
 }
 
 export interface QuestReward {
@@ -469,4 +519,13 @@ export interface QuestCosponsorMetadata {
 	 * The co-sponsor's redemption instructions
 	 */
 	redemption_instructions: string;
+}
+
+export interface CaptchaDataFromRequest {
+	captcha_key: string[];
+	captcha_sitekey: string;
+	captcha_service: 'hcaptcha';
+	captcha_session_id: string;
+	captcha_rqdata: string;
+	captcha_rqtoken: string;
 }
