@@ -145,7 +145,7 @@ if (!quest) {
 							: Math.floor(
 									data.userStatus.progress.PLAY_ON_DESKTOP
 										.value,
-							  );
+								);
 					console.log(`Quest progress: ${progress}/${secondsNeeded}`);
 
 					if (progress >= secondsNeeded) {
@@ -168,9 +168,7 @@ if (!quest) {
 				FluxDispatcher.subscribe('QUESTS_SEND_HEARTBEAT_SUCCESS', fn);
 
 				console.log(
-					`Spoofed your game to ${applicationName}. Wait for ${Math.ceil(
-						(secondsNeeded - secondsDone) / 60,
-					)} more minutes.`,
+					`Spoofed your game to ${applicationName}. Wait for ${Math.ceil((secondsNeeded - secondsDone) / 60)} more minutes.`,
 				);
 			});
 		}
@@ -197,7 +195,7 @@ if (!quest) {
 						: Math.floor(
 								data.userStatus.progress.STREAM_ON_DESKTOP
 									.value,
-						  );
+							);
 				console.log(`Quest progress: ${progress}/${secondsNeeded}`);
 
 				if (progress >= secondsNeeded) {
@@ -214,9 +212,7 @@ if (!quest) {
 			FluxDispatcher.subscribe('QUESTS_SEND_HEARTBEAT_SUCCESS', fn);
 
 			console.log(
-				`Spoofed your stream to ${applicationName}. Stream any window in vc for ${Math.ceil(
-					(secondsNeeded - secondsDone) / 60,
-				)} more minutes.`,
+				`Spoofed your stream to ${applicationName}. Stream any window in vc for ${Math.ceil((secondsNeeded - secondsDone) / 60)} more minutes.`,
 			);
 			console.log(
 				'Remember that you need at least 1 other person to be in the vc!',
