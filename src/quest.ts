@@ -33,6 +33,10 @@ export class Quest {
 		return this.data.preview;
 	}
 
+	get raw() {
+		return this.data;
+	}
+
 	isExpired(reference: Date = new Date()): boolean {
 		return reference.getTime() > new Date(this.data.config.expires_at).getTime();
 	}
